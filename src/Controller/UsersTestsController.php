@@ -84,35 +84,28 @@ class UsersTestsController extends AppController
         $this->set(compact('usersTest', 'users', 'tests'));
     }
     public function enviar($id = null){     
-   
+        $this->loadModel("UsersTests");
+        $this->loadModel("Evaluations");
         if ($this->request->is('post')) {
+            $usersTest = $this->UsersTests->get($id);
             $ip = $this->request->clientIp();
-            $this->loadModel('Evaluations');
-            $ruta = $ip."/encuestaD/public/".$id."?page=";
-            
-            $evaluation = $this->Evaluations->newEmptyEntity();
-            $evaluation->userTests_id= $id ;
-            $evaluation->email="andresclarl@unicauca.edu.co";
-            $evaluation->toke=Text::UUID();
-            $evaluation->state=0;
-            $this->Evaluations->save($evaluation);
-            $to = "andresclarl@unicauca.edu.co";
-            $subject = "Encuesta";
-            $message = "Se le ha enviado la encuesta para responder ".$ruta;
-            try {
-                $mail = $this->Email->send_mail($to, $subject, $message);
-            } catch (Exception $e) {
-                $this->Flash->error(__('Fallo al enviar los correos'));
-            }  
-            /*$correos=$this->request->getData("co");
+            $ruta = $ip."/encuestaD/evaluations/edit/".$id;
+            $lineaCorreos = $this->request->getData('correo');         
+            $correos = explode(", ", $lineaCorreos);
             if (!empty($correos)){     
-                $this->loadModel('Evaluations');
                 foreach($correos as $c) {
                     $evaluation = $this->Evaluations->newEmptyEntity();
-                    $evaluation->user_test_id= $id ;
-                    $evaluation->email=$c;
-                    $evaluation->toke=Text::UUID();
-                    $evaluation->state='0';
+                    $data = array(
+                        'users_tests_id' => $usersTest->id,
+                        'email' => $c,
+                        'token' => Text::UUID(),
+                        'state' => 0,
+                        'age' => 0,
+                        'gender' => 'm',
+                        'location' => 'nula',
+                        'date' => 'n'
+                    );
+                    $evaluation = $this->Evaluations->patchEntity($evaluation, $data);
                     $this->Evaluations->save($evaluation);
                     $to = $c;
                     $subject = "Encuesta";
@@ -126,7 +119,6 @@ class UsersTestsController extends AppController
                 $this->Flash->success(__('Invitaciones enviadas.'));
                 return $this->redirect(['action' => 'index']);
             }else{$this->Flash->error(__('Muy pocos correos para una encuesta.'));}
-            */
         }   
     }
 }
