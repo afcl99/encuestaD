@@ -32,13 +32,14 @@ class UsersController extends AppController
         return parent::isAuthorized($user);        
     }
     public function login(){
+        $this->viewBuilder()->setLayout('vacio');
         if($this->request->is('post'))
         {
             $user=$this->Auth->identify();
             if($user)
             {
                 $this->Auth->setUser($user);
-                return $this->redirect(['controller'=>'Tests']);
+                return $this->redirect(['action'=>'index']);
             }
             $this->Flash->error('incorrect login');
         }
@@ -81,10 +82,11 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
-    {
+    {   
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+        
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 

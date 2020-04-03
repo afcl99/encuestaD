@@ -38,17 +38,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-<nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="/">Dragones Infernales</a>
-        </div>
-        <div class="top-nav-links">            
-            <?= $this->Html->link('Usuarios',['controller'=>'Users','action'=>'index']);?>
-            <?= $this->Html->link('Encuestas',['controller'=>'UsersTests','action'=>'index']);?>
-            <?= $this->Html->link('Tests',['controller'=>'Tests','action'=>'index']);?>
-            <?= $this->Html->link('Cerrar sesion',['controller'=>'Users','action'=>'logout']);?>
-        </div>
-    </nav>
+
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>
