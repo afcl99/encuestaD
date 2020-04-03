@@ -38,20 +38,22 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/bootstrap.min.css?h=aad6187964b63c9cf13110b97da94f79">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://code.iconify.design/1/1.0.5/iconify.min.js"></script>
+<?php echo $this->Html->charset(); ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home</title>
-    <?php echo $this->Html->css('style');?>
-    <?php $this->Html->css('bootstrap/bootstrap.min'); ?>
     
-    <?php $this->Html->script('bootstrap/bootstrap.min'); ?>
+    <?php echo $this->Html->css('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i');?>
+
+    <!-- Vendor CSS Files -->
+    <?php echo $this->Html->css('bootstrap/bootstrap.min.css'); ?>
+    <?php echo $this->Html->css('ionicons/css/ionicons.min.css'); ?>  
+    <?php echo $this->Html->css('animate.css/animate.min.css'); ?>
+    <?php echo $this->Html->css('font-awesome/css/font-awesome.min.css'); ?>
+    <?php echo $this->Html->css('venobox/venobox.css'); ?>
+  
+    
+    <?php echo $this->Html->css('Style');?>
 
 
 </head>
@@ -395,7 +397,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 
               <div>
                 <i class="ion-ios-email-outline"></i>
-                <p>info@example.com</p>
+                <p>encuestadragones@gmail.com</p>
               </div>
 
               <div>
@@ -477,17 +479,26 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/wow/wow.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/superfish/superfish.min.js"></script>
-  <script src="assets/vendor/hoverIntent/hoverIntent.js"></script>
-
+  <?php echo $this->Html->script('jquery/jquery.min.js'); ?>
+  <?php echo $this->Html->script('bootstrap/js/bootstrap.bundle.min.js'); ?>
+  <?php echo $this->Html->script('jquery.easing/jquery.easing.min.js'); ?>
+  <?php echo $this->Html->script('php-email-form/validate.js'); ?>
+  <?php echo $this->Html->script('wow/wow.min.js'); ?>
+  <?php echo $this->Html->script('venobox/venobox.min.js'); ?>
+  <?php echo $this->Html->script('superfish/superfish.min.js'); ?>
+  <?php echo $this->Html->script('hoverIntent/hoverIntent.js'); ?>
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <?php echo $this->Html->script('main.js'); ?>
+  
+  
+  
+  
+  
+  
+  
+
+  
+
 
 </body>
 

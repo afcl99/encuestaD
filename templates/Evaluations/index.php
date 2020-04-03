@@ -20,8 +20,6 @@
                     <th><?= $this->Paginator->sort('gender') ?></th>
                     <th><?= $this->Paginator->sort('location') ?></th>
                     <th><?= $this->Paginator->sort('date') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -37,11 +35,9 @@
                     <td><?= h($evaluation->gender) ?></td>
                     <td><?= h($evaluation->location) ?></td>
                     <td><?= h($evaluation->date) ?></td>
-                    <td><?= h($evaluation->created) ?></td>
-                    <td><?= h($evaluation->modified) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $evaluation->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $evaluation->id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'responder', $evaluation->id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $evaluation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $evaluation->id)]) ?>
                     </td>
                 </tr>

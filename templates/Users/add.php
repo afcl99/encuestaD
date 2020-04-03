@@ -22,7 +22,7 @@
                     echo $this->Form->control('first_name');
                     echo $this->Form->control('last_name');
                     echo $this->Form->control('role', ['label' => false, 'options' => ['admin' => 'Administrador', 'user' => 'Usuario']]);
-                    ///echo $this->Form->control('active');
+                    //echo $this->Form->control('active');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

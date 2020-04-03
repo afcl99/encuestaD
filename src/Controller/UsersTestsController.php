@@ -86,22 +86,25 @@ class UsersTestsController extends AppController
     public function enviar($id = null){     
    
         if ($this->request->is('post')) {
+            $ip = $this->request->clientIp();
             $this->loadModel('Evaluations');
+            $ruta = $ip."/encuestaD/public/".$id."?page=";
+            
             $evaluation = $this->Evaluations->newEmptyEntity();
-                $evaluation->userTests_id= $id ;
-                $evaluation->email="andresclarl@unicauca.edu.co";
-                $evaluation->toke=Text::UUID();
-                $evaluation->state='0';
-                $this->Evaluations->save($evaluation);
-                $to = "andresclarl@unicauca.edu.co";
-                $subject = "Encuesta";
-                $message = "Se le ha enviado la encuesta para responder".$evaluation->toke;
-                try {
-                    $mail = $this->Email->send_mail($to, $subject, $message);
-                } catch (Exception $e) {
-                    $this->Flash->error(__('Fallo al enviar los correos'));
-                }  
-            $correos=$this->request->getData("co");
+            $evaluation->userTests_id= $id ;
+            $evaluation->email="andresclarl@unicauca.edu.co";
+            $evaluation->toke=Text::UUID();
+            $evaluation->state=0;
+            $this->Evaluations->save($evaluation);
+            $to = "andresclarl@unicauca.edu.co";
+            $subject = "Encuesta";
+            $message = "Se le ha enviado la encuesta para responder ".$ruta;
+            try {
+                $mail = $this->Email->send_mail($to, $subject, $message);
+            } catch (Exception $e) {
+                $this->Flash->error(__('Fallo al enviar los correos'));
+            }  
+            /*$correos=$this->request->getData("co");
             if (!empty($correos)){     
                 $this->loadModel('Evaluations');
                 foreach($correos as $c) {
@@ -123,6 +126,7 @@ class UsersTestsController extends AppController
                 $this->Flash->success(__('Invitaciones enviadas.'));
                 return $this->redirect(['action' => 'index']);
             }else{$this->Flash->error(__('Muy pocos correos para una encuesta.'));}
+            */
         }   
     }
 }
