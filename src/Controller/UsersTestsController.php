@@ -98,18 +98,16 @@ class UsersTestsController extends AppController
                     $data = array(
                         'users_tests_id' => $usersTest->id,
                         'email' => $c,
-                        'token' => Text::UUID(),
+                        'toke' => Text::UUID(),
                         'state' => 0,
-                        'age' => 0,
-                        'gender' => 'm',
-                        'location' => 'nula',
-                        'date' => 'n'
                     );
                     $evaluation = $this->Evaluations->patchEntity($evaluation, $data);
                     $this->Evaluations->save($evaluation);
+                    $urlbase = '<a href=https://encuestasdragones.000webhostapp.com">';
+                    $controlador = "evaluations/responder/";
                     $to = $c;
                     $subject = "Encuesta";
-                    $message = "Se le ha enviado la encuesta para responder".$evaluation;
+                    $message = "prueba";
                     try {
                         $mail = $this->Email->send_mail($to, $subject, $message);
                     } catch (Exception $e) {

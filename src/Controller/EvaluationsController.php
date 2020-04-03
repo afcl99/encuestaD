@@ -72,7 +72,8 @@ class EvaluationsController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function responder($id = null)
-    {
+    {   
+        $this->viewBuilder()->setLayout('vacio');
         $evaluation = $this->Evaluations->get($id, [
             'contain' => [],
         ]);
