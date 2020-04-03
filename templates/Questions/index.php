@@ -4,7 +4,8 @@
  * @var \App\Model\Entity\Question[]|\Cake\Collection\CollectionInterface $questions
  */
 ?>
-<div class="questions index content">    
+<div class="questions index content">
+    <?= $this->Html->link(__('Volver'), ['controller' => 'tests','action' => 'index'], ['class' => 'button float-right']) ?>   
     <h3><?= __('Preguntas') ?></h3>
     <div class="table-responsive">
         <table>

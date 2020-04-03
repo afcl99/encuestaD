@@ -7,8 +7,7 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Volver'), ['action' => 'login'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Volver'), ['action' => 'index'], ['class' => 'button float-left']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">

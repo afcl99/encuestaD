@@ -53,7 +53,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <?php echo $this->Html->css('venobox/venobox.css'); ?>
   
     
-    <?php echo $this->Html->css('Style');?>
+    <?php echo $this->Html->css('Style.css');?>
 
 
 </head>
@@ -397,7 +397,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 
               <div>
                 <i class="ion-ios-email-outline"></i>
-                <p>encuestadragones@gmail.com</p>
+                <p>info@example.com</p>
               </div>
 
               <div>

@@ -39,7 +39,7 @@ class CreateAnswers extends AbstractMigration
             'null' => false,
         ]);
         $table->addForeignkey("question_id","questions","id",["delete"=>"CASCADE","update"=>"CASCADE"]);
-        $table->addForeignkey("evaluation_id","evaluationss","id",["delete"=>"CASCADE","update"=>"CASCADE"]);
+        $table->addForeignkey("evaluation_id","evaluations","id",["delete"=>"CASCADE","update"=>"CASCADE"]);
         $table->create();
     }
 }

@@ -14,17 +14,18 @@ use Cake\Event\EventInterface;
  */
 class UsersController extends AppController
 {
-    public function beforeFilter(EventInterface $event)
-    {
-        parent::beforeFilter($event);
-        $this->Auth->allow('add');
-    }
     public function isAuthorized($user)
     {
         $action=$this->request->getParam('action');
-        if(isset($user['role']) and $user['role'] === 'user')
+        if(isset($user['role']) and $user['role'] === 'admin')
         {
-            if(in_array($action, ['index', 'view', 'edit', 'logout']))
+            if(in_array($action, ['index', 'view', 'edit', 'logout','add']))
+            {
+                return true;
+            }
+        }if(isset($user['role']) and $user['role'] === 'user')
+        {
+            if(in_array($action, ['view', 'logout']))
             {
                 return true;
             }
@@ -87,8 +88,9 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             $user->active = true;
+            echo $user->username;
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Usuario guardado!'));
 
                 return $this->redirect(['action' => 'index']);
             }
